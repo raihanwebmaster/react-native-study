@@ -1,51 +1,26 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import Header from "./components/Header";
+
 
 export default function App() {
-  const [people, setPeople] = useState([
-    { name: "Mun", id: "1" },
-    { name: "Muntaha", id: "2" },
-    { name: "Muntaha Naz", id: "3" },
-    { name: "Muntaha Naz Monsur", id: "4" },
-    { name: "Muntaha Naz Monsur Omi", id: "5" },
-    { name: "Raihan", id: "6" },
-    { name: "Raihan Uddin", id: "7" },
+  const [todos, setTodos] = useState([
+    { text: "buy coffee", key: "1" },
+    { text: "create an app", key: "2" },
+    { text: "play on the switch", key: "3" },
   ]);
-  const pressHandler = (id) => {
-    console.log(id);
-    setPeople((prevPeople) => {
-      return prevPeople.filter((person) => person.id !== id);
-    });
-  };
-
   return (
     <View style={styles.container}>
-      <FlatList
-        // numColumns={2}
-        keyExtractor={(item) => item.id}
-        data={people}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => pressHandler(item.id)}>
-            <Text style={styles.item}>{item.name}</Text>
-          </TouchableOpacity>
-        )}
-      />
-
-      {/* <ScrollView>
-        {people.map(item =>  (
-            <View key={item.key}>
-              <Text style={styles.item}>{item.name}</Text>
-            </View>
-          )
-        )}
-      </ScrollView> */}
+      <Header/>
+      <View style={styles.content}>
+        {/* form */}
+        <View style={styles.list}>
+          <FlatList
+            data={todos}
+            renderItem={({ item }) => <Text>{item.text}</Text>}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -54,15 +29,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 40,
-    paddingHorizontal: 20,
   },
-  item: {
-    marginTop: 24,
-    padding: 30,
-    backgroundColor: "pink",
-    fontSize: 24,
-    marginHorizontal: 10,
-    marginTop: 24,
+  content: {
+    padding: 40,
+  },
+  list: {
+    marginTop: 20,
   },
 });
