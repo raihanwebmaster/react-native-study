@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import AddTodo from "./components/AddTodo";
 import Header from "./components/Header";
+import Sandbox from "./components/Sandbox";
 import TodoItem from "./components/TodoItem";
 
 export default function App() {
@@ -37,7 +38,13 @@ export default function App() {
     }
   };
   return (
-    <TouchableWithoutFeedback onPress={() => { console.log('dismissed keyboard'); Keyboard.dismiss(); }}>
+    // <Sandbox/>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        console.log("dismissed keyboard");
+        Keyboard.dismiss();
+      }}
+    >
       <View style={styles.container}>
         <Header />
         <View style={styles.content}>
@@ -63,8 +70,10 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 40,
+    flex: 1,
   },
   list: {
     marginTop: 20,
+    flex: 1,
   },
 });
