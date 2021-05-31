@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 import {
   Alert,
   FlatList,
   Keyboard,
   StyleSheet,
-  Text,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -46,6 +46,7 @@ export default function App() {
       }}
     >
       <View style={styles.container}>
+        <StatusBar backgroundColor="#A5A8AC" />
         <Header />
         <View style={styles.content}>
           <AddTodo submitHandler={submitHandler} />
